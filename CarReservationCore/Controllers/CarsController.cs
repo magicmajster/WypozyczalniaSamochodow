@@ -16,7 +16,7 @@ namespace CarReservationCore.Controllers
         }
 
         // GET: Cars
-        // Każdy (nawet niezalogowany) może zobaczyć listę
+        
         [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
@@ -25,7 +25,7 @@ namespace CarReservationCore.Controllers
         }
 
         // GET: Cars/Details/5
-        // Można udostępnić wszystkim (AllowAnonymous) lub tylko zalogowanym (Authorize)
+        
         [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
@@ -36,7 +36,7 @@ namespace CarReservationCore.Controllers
         }
 
         // GET: Cars/Create
-        // Tylko Admin może wejść na formularz tworzenia nowego auta
+        
         [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
@@ -51,7 +51,7 @@ namespace CarReservationCore.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // Jeśli błędy – wracamy do formularza z tymi samymi danymi
+              
                 return View(car);
             }
 

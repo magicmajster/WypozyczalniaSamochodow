@@ -3,12 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarReservationCore.Controllers
 {
-    // Jeśli w ogóle nie chcesz Identity, usuń ten kontroler.
-    // Jeżeli chcesz samo logowanie/wylogowanie, możesz zostawić np. tak:
+    
     public class AccountController : Controller
     {
-        private readonly SignInManager<IdentityUser> _signInManager; // lub ApplicationUser
-        private readonly UserManager<IdentityUser> _userManager;     // lub ApplicationUser
+        private readonly SignInManager<IdentityUser> _signInManager; 
+        private readonly UserManager<IdentityUser> _userManager;     
 
         public AccountController(
             SignInManager<IdentityUser> signInManager,
