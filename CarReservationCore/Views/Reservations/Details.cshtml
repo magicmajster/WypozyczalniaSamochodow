@@ -1,0 +1,55 @@
+﻿@model CarReservationCore.Models.Reservation
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Szczegóły rezerwacji</h2>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">
+            Rezerwacja #@Model.ReservationId
+        </h5>
+        <dl class="row">
+            <dt class="col-sm-3">Samochód</dt>
+            <dd class="col-sm-9">
+                @Model.Car?.Brand @Model.Car?.Model (@Model.Car?.Year)
+            </dd>
+
+            <dt class="col-sm-3">Klient</dt>
+            <dd class="col-sm-9">
+                @Model.Customer?.FirstName @Model.Customer?.LastName
+            </dd>
+
+            <dt class="col-sm-3">Data rozpoczęcia</dt>
+            <dd class="col-sm-9">
+                @Model.StartDate.ToShortDateString()
+            </dd>
+
+            <dt class="col-sm-3">Data zakończenia</dt>
+            <dd class="col-sm-9">
+                @Model.EndDate.ToShortDateString()
+            </dd>
+
+            <dt class="col-sm-3">Status</dt>
+            <dd class="col-sm-9">
+                <span class="badge bg-info text-dark">@Model.Status</span>
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fa-solid fa-arrow-left"></i> Powrót do listy
+        </a>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.ReservationId" class="btn btn-warning">
+                <i class="fa-solid fa-pen"></i> Edytuj
+            </a>
+            <a asp-action="Delete" asp-route-id="@Model.ReservationId" class="btn btn-danger">
+                <i class="fa-solid fa-trash"></i> Usuń
+            </a>
+        }
+    </div>
+</div>

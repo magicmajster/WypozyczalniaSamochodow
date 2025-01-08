@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CarReservationCore.Models.Car>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-4">Dostępne samochody</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create" class="btn btn-success">
+            <i class="fa-solid fa-plus"></i> Dodaj nowy
+        </a>
+    </p>
+}
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Rok</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Brand</td>
+                <td>@item.Model</td>
+                <td>@item.Year</td>
+                <td>
+                    <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@item.CarId">
+                        <i class="fa-solid fa-circle-info"></i> Szczegóły
+                    </a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@item.CarId">
+                            <i class="fa-solid fa-pen"></i> Edytuj
+                        </a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.CarId">
+                            <i class="fa-solid fa-trash"></i> Usuń
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

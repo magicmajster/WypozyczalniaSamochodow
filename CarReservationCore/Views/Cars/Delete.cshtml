@@ -1,0 +1,14 @@
+﻿@model CarReservationCore.Models.Car
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Usuń samochód</h2>
+
+<p>Usuwasz: <strong>@Model.Brand @Model.Model (@Model.Year)</strong></p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="CarId" />
+    <button type="submit" class="btn btn-danger">Potwierdź usunięcie</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>

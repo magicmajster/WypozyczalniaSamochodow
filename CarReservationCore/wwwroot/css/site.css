@@ -1,0 +1,31 @@
+﻿
+.bg-image {
+    background: url('/images/banner-car.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.table thead th {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.table tbody tr:hover {
+    background-color: #f0f0f0;
+    transition: background-color 0.2s ease-in;
+}
+
+
+.btn-primary {
+    background-color: #e25822; 
+    border-color: #e25822;
+}
+
+    .btn-primary:hover {
+        background-color: #cf4711;
+        border-color: #cf4711;
+    }
+
+
+.form-control {
+    border-radius: 0;
+}

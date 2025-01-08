@@ -1,0 +1,45 @@
+﻿@model CarReservationCore.Models.Reservation
+@{
+    
+    var cars = ViewBag.Cars as List<CarReservationCore.Models.Car>;
+    var customers = ViewBag.Customers as List<CarReservationCore.Models.Customer>;
+}
+
+<h2>Utwórz rezerwację</h2>
+
+<form asp-action="Create" method="post" class="row g-3">
+    <div class="col-md-6">
+        <label for="CarId" class="form-label">Samochód</label>
+        <select class="form-select" asp-for="CarId">
+            @foreach (var car in cars)
+            {
+                <option value="@car.CarId">@car.Brand @car.Model (@car.Year)</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label for="CustomerId" class="form-label">Klient</label>
+        <select class="form-select" asp-for="CustomerId">
+            @foreach (var cust in customers)
+            {
+                <option value="@cust.CustomerId">@cust.FirstName @cust.LastName</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="StartDate" class="form-label"></label>
+        <input asp-for="StartDate" class="form-control" type="date" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+    <div class="col-md-6">
+        <label asp-for="EndDate" class="form-label"></label>
+        <input asp-for="EndDate" class="form-control" type="date" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Zapisz</button>
+    </div>
+</form>
+
+
+
