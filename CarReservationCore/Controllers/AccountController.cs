@@ -11,18 +11,18 @@ namespace CarReservationCore.Controllers
     {
         private readonly SignInManager<ApplicationUser> _signInManager; 
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly ApplicationDbContext _context;
+    
 
         public AccountController(
             SignInManager<ApplicationUser> signInManager,
-            UserManager<ApplicationUser> userManager,
-            ApplicationDbContext context
+            UserManager<ApplicationUser> userManager
+           
             )
 
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            _context = context;
+          
         }
 
         //Get: /Account/register
@@ -107,30 +107,7 @@ namespace CarReservationCore.Controllers
         }
 
 
-        [HttpGet]
-        public IActionResult AddUser()
-        {
-            
-
-                return View("Adduser");
-
-            
-        }
-        [HttpPost]
-        public async Task<IActionResult> AddUser(Customer customer)
-        {
-            if (ModelState.IsValid)
-            {
-
-                return View();
-            }
-
-            _context.Add(customer);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-
-
-        }
+        
 
 
 

@@ -12,11 +12,14 @@ namespace CarReservationCore.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ApplicationDbContext _customer;
 
-        public ReservationsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+
+        public ReservationsController(ApplicationDbContext customer,ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
             _userManager = userManager;
+            _customer = customer;
         }
 
         // GET: Reservations
@@ -176,5 +179,33 @@ namespace CarReservationCore.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        [HttpGet]
+        public IActionResult AddUser()
+        {
+
+
+            return View();
+
+
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddUser(Customer customer)
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View(customer);
+            }
+
+            _customer.Add(customer);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+
+        }
+
+
     }
 }

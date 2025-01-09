@@ -81,7 +81,7 @@ namespace CarReservationCore.Controllers
         {
             if (id != car.CarId) return NotFound();
 
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 try
                 {

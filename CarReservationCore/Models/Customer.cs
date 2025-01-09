@@ -14,7 +14,7 @@ namespace CarReservationCore.Models
         [StringLength(50)]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Email jest wymagany.")]
+        [Required]
         [EmailAddress(ErrorMessage = "Niepoprawny format adresu email.")]
         public string Email { get; set; }
     }

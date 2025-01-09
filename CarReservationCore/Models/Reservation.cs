@@ -7,12 +7,13 @@ namespace CarReservationCore.Models
     public class Reservation
     {
         public int ReservationId { get; set; }
-
-        [Required(ErrorMessage = "Data rozpoczęcia jest wymagana.")]
+        [Required]
+        [FutureDate(ErrorMessage = "Start date must be in the future.")]
         public DateTime StartDate { get; set; }
 
+
         [Required(ErrorMessage = "Data zakończenia jest wymagana.")]
-      //  [DateGreaterThan("StartDate", ErrorMessage = "Data zakończenia musi być po dacie rozpoczęcia.")]
+        [DateGreaterThan("StartDate", ErrorMessage = "Data zakończenia musi być po dacie rozpoczęcia.")]
         public DateTime EndDate { get; set; }
 
         [Required]
@@ -28,8 +29,9 @@ namespace CarReservationCore.Models
         [StringLength(30)]
         public string Status { get; set; } = "Pending";
 
-      //  public string UserId { get; set; }
+        //  public string UserId { get; set; }
 
-     //   public virtual ApplicationUser User { get; set; }   
+        //   public virtual ApplicationUser User { get; set; }   
     }
+
 }
