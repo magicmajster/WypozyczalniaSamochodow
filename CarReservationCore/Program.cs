@@ -12,6 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // 2) Dodaj Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
+
     // Możesz skonfigurować polityki haseł, lockout itp.
     options.Password.RequiredLength = 6;
     options.Password.RequireDigit = true;

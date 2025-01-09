@@ -44,9 +44,7 @@
 
         @if (User.IsInRole("Admin"))
         {
-            <a asp-action="Edit" asp-route-id="@Model.ReservationId" class="btn btn-warning">
-                <i class="fa-solid fa-pen"></i> Edytuj
-            </a>
+            
             <a asp-action="Delete" asp-route-id="@Model.ReservationId" class="btn btn-danger">
                 <i class="fa-solid fa-trash"></i> Usuń
             </a>
