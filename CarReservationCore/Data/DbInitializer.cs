@@ -17,22 +17,22 @@ namespace CarReservationCore.Data
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
-                    context.Database.Migrate(); // automatycznie robi migracje
+                    context.Database.Migrate(); 
 
-                    // Dodaj role
+                   
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     SeedRoles(roleManager).Wait();
 
-                    // Dodaj użytkowników
+                    
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     SeedUsers(userManager).Wait();
 
-                    // Dodaj przykładowe dane (samochody, itp.)
+                   
                     SeedCarsAndCustomers(context);
                 }
                 catch (Exception ex)
                 {
-                    // Logowanie błędów
+                   
                     Console.WriteLine(ex.Message);
                 }
             }
@@ -52,7 +52,6 @@ namespace CarReservationCore.Data
 
         private static async Task SeedUsers(UserManager<ApplicationUser> userManager)
         {
-            // Admin
             var adminEmail = "admin@demo.pl";
             if (await userManager.FindByEmailAsync(adminEmail) == null)
             {
@@ -68,7 +67,7 @@ namespace CarReservationCore.Data
                 }
             }
 
-            // Zwykły użytkownik
+        
             var userEmail = "user@demo.pl";
             if (await userManager.FindByEmailAsync(userEmail) == null)
             {
