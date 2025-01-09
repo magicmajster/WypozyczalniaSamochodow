@@ -7,10 +7,21 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Compile Remove="Views\NewFolder1\**" />
+	  <Compile Remove="Views\NewFolder\**" />
+	  <Content Remove="Views\NewFolder1\**" />
+	  <Content Remove="Views\NewFolder\**" />
+	  <EmbeddedResource Remove="Views\NewFolder1\**" />
+	  <EmbeddedResource Remove="Views\NewFolder\**" />
+	  <None Remove="Views\NewFolder1\**" />
+	  <None Remove="Views\NewFolder\**" />
+	</ItemGroup>
+	<ItemGroup>
 	  <Compile Remove="Views\Reservations\Create.cshtml.cs" />
 	  <Compile Remove="Views\Reservations\Delete.cshtml.cs" />
 	  <Compile Remove="Views\Reservations\Details.cshtml.cs" />
 	  <Compile Remove="Views\Reservations\Index.cshtml.cs" />
+	  <Compile Remove="Views\Reservations\RegisterUser.cshtml.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

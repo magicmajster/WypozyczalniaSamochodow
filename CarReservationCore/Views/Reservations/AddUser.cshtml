@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CarReservationCore.Models.Customer
+
+<h1>elo</h1>
+
+    @if (User.IsInRole("User"))
+    {
+      <h1>Zaloguj się jako administrator aby dodać klienta</h1>
+    }
+    @if (User.IsInRole("Admin"))
+    {
+        <form asp-action="AddUser" method="post" class="row g-3">
+           
+            <div class="col-md-6">
+                <label asp-for="FirstName" class="form-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="LastName" class="form-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary">Zapisz</button>
+                <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+            </div>
+        </form>
+    }
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+    
+
+
+
+
